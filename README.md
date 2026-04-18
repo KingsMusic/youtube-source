@@ -2,7 +2,7 @@
 A rewritten YouTube source manager for Lavaplayer.
 
 This source aims to provide robustness by leveraging multiple InnerTube clients
-for requests. Where one client fails, another will try to load the request.
+for requests. Where one client fails, another will try to load the request
 Which clients are used is entirely configurable.
 
 ## Table of Contents
