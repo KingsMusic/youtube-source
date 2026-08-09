@@ -15,8 +15,8 @@ import java.io.IOException;
 public class Tv extends StreamingNonMusicClient {
     public static ClientConfig BASE_CONFIG = new ClientConfig()
         .withClientName("TVHTML5")
-        .withUserAgent("Mozilla/5.0 (ChromiumStylePlatform) Cobalt/25.lts.30.1034943-gold (unlike Gecko), Unknown_TV_Unknown_0/Unknown (Unknown, Unknown)")
-        .withClientField("clientVersion", "7.20260114.12.00");
+        .withUserAgent("Mozilla/5.0 (Fuchsia) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 CrKey/1.56.500000")
+        .withClientField("clientVersion", "7.20260113.16.00");
 
     protected ClientOptions options;
 
