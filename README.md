@@ -7,7 +7,7 @@ Which clients are used is entirely configurable.
 
 ## Table of Contents
 - [Common](#common)
-  - Information about the `common` module and usage of.
+  - Information about the `common` module and usage of
 - [V2](#v2)
   - Information about the `v2` module and usage of
 - [Plugin](#plugin)
