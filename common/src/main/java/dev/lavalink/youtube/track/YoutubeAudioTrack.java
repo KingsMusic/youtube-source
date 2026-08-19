@@ -214,7 +214,7 @@ public class YoutubeAudioTrack extends DelegatedAudioTrack {
 
     // Reuse the cipher manager's throttling ('n') transform by wrapping the ABR URL in a synthetic format.
     StreamFormat synthetic = new StreamFormat(format.getType(), format.getItag(), 0, 0, 0,
-        serverAbrStreamingUrl, nParameter, null, "signature", true, false);
+        serverAbrStreamingUrl, nParameter, null, "signature", true, false, false);
     return sourceManager.getCipherManager().resolveFormatUrl(httpInterface, formats.getPlayerScriptUrl(), synthetic);
   }
 
