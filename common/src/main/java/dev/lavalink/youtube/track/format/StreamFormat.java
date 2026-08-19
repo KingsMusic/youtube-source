@@ -23,6 +23,7 @@ public class StreamFormat {
   private final String signatureKey;
   private final boolean defaultAudioTrack;
   private final boolean isDrc;
+  private final boolean isAutoDubbed;
   private final long lastModified;
   private final String xtags;
 
@@ -49,9 +50,10 @@ public class StreamFormat {
       String signature,
       String signatureKey,
       boolean isDefaultAudioTrack,
-      boolean isDrc
+      boolean isDrc,
+      boolean isAutoDubbed
   ) {
-    this(type, itag, bitrate, contentLength, audioChannels, url, nParameter, signature, signatureKey, isDefaultAudioTrack, isDrc, 0, null);
+    this(type, itag, bitrate, contentLength, audioChannels, url, nParameter, signature, signatureKey, isDefaultAudioTrack, isDrc, isAutoDubbed, 0, null);
   }
 
   /**
@@ -95,6 +97,7 @@ public class StreamFormat {
     this.signatureKey = signatureKey;
     this.defaultAudioTrack = isDefaultAudioTrack;
     this.isDrc = isDrc;
+    this.isAutoDubbed = isAutoDubbed;
     this.lastModified = lastModified;
     this.xtags = xtags;
   }
@@ -210,6 +213,13 @@ public class StreamFormat {
    */
   public boolean isDrc() {
     return isDrc;
+  }
+
+    /**
+   * @return Whether this format is auto dubbed.
+   */
+  public boolean isAutoDubbed() {
+    return isAutoDubbed;
   }
 
   @Override
