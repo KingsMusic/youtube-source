@@ -27,6 +27,34 @@ public class StreamFormat {
   private final long lastModified;
   private final String xtags;
 
+    /**
+   * @param type Mime type of the format
+   * @param bitrate Bitrate of the format
+   * @param contentLength Length in bytes of the media
+   * @param audioChannels Number of audio channels
+   * @param url Base URL for the playback of this format
+   * @param nParameter n parameter for this format
+   * @param signature Cipher signature for this format
+   * @param signatureKey The key to use for deciphered signature in the final playback URL
+   * @param isDefaultAudioTrack Whether this format contains an audio track that is used by default.
+   * @param isDrc Whether this format has Dynamic Range Compression.
+   */
+  public StreamFormat(
+      ContentType type,
+      int itag,
+      long bitrate,
+      long contentLength,
+      long audioChannels,
+      String url,
+      String nParameter,
+      String signature,
+      String signatureKey,
+      boolean isDefaultAudioTrack,
+      boolean isDrc,
+      boolean isAutoDubbed
+  ) {
+    this(type, itag, bitrate, contentLength, audioChannels, url, nParameter, signature, signatureKey, isDefaultAudioTrack, isDrc, isAutoDubbed, 0, null);
+  }
 
   /**
    * @param type Mime type of the format
@@ -54,6 +82,7 @@ public class StreamFormat {
       String signatureKey,
       boolean isDefaultAudioTrack,
       boolean isDrc,
+      boolean isAutoDubbed,
       long lastModified,
       String xtags
   ) {
