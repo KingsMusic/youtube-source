@@ -143,18 +143,6 @@ public class YoutubeAudioTrack extends DelegatedAudioTrack {
 
     StreamFormat format = formats.getBestFormat();
 
-    if (format.isSabr()) {
-      processSabr(localExecutor, httpInterface, client, formats, format);
-      return;
-    }
-
-    FormatWithUrl augmentedFormat = augmentFormatWithUrl(httpInterface, client, formats, format);
-    log.debug("Starting track with URL from client {}: {}", client.getIdentifier(), augmentedFormat.signedUrl);
-
-    String query = augmentedFormat.signedUrl.getRawQuery();
-    boolean isLegacyFormat = query != null && query.contains("itag=18");
-    boolean isStream = trackInfo.isStream || (!isLegacyFormat && augmentedFormat.format.getContentLength() == CONTENT_LENGTH_UNKNOWN);
-
     long contentLength = augmentedFormat.format.getContentLength();
 
     // itag 18 carries no contentLength, and the stream requests ranges by query parameter, so the
@@ -164,6 +152,18 @@ public class YoutubeAudioTrack extends DelegatedAudioTrack {
     if (!trackInfo.isStream && contentLength == CONTENT_LENGTH_UNKNOWN) {
       contentLength = probeContentLength(httpInterface, augmentedFormat.signedUrl);
     }
+
+    if (format.isSabr()) {
+      processSabr(localExecutor, httpInterface, client, formats, format, contentLength);
+      return;
+    }
+
+    FormatWithUrl augmentedFormat = augmentFormatWithUrl(httpInterface, client, formats, format);
+    log.debug("Starting track with URL from client {}: {}", client.getIdentifier(), augmentedFormat.signedUrl);
+
+    String query = augmentedFormat.signedUrl.getRawQuery();
+    boolean isLegacyFormat = query != null && query.contains("itag=18");
+    boolean isStream = trackInfo.isStream || (!isLegacyFormat && augmentedFormat.format.getContentLength() == CONTENT_LENGTH_UNKNOWN);
 
 
     try {
